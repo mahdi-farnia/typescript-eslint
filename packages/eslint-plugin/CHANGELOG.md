@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.37.0](https://github.com/typescript-eslint/typescript-eslint/compare/v5.36.2...v5.37.0) (2022-09-19)
+
+
+### Features
+
+* **eslint-plugin:** [call-super-on-override] warns and suggests adding `super.method(...parameters)` to overridden methods. ([#684](https://github.com/typescript-eslint/typescript-eslint/issues/684))
+
+
+
+
+
 ## [5.36.2](https://github.com/typescript-eslint/typescript-eslint/compare/v5.36.1...v5.36.2) (2022-09-05)
 
 
