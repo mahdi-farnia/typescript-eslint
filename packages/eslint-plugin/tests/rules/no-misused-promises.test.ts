@@ -1,5 +1,7 @@
+import { RuleTester } from '@typescript-eslint/rule-tester';
+
 import rule from '../../src/rules/no-misused-promises';
-import { getFixturesRootDir, RuleTester } from '../RuleTester';
+import { getFixturesRootDir } from '../RuleTester';
 
 const rootDir = getFixturesRootDir();
 
@@ -243,14 +245,22 @@ type O = {
 const Component = (obj: O) => null;
 <Component bool func={async () => 10} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     {
       code: `
 const Component: any = () => null;
 <Component func={async () => 10} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     {
       code: `
@@ -314,7 +324,11 @@ declare function Component(props: Props): any;
 
 const _ = <Component onEvent={async () => {}} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
     `
 console.log({ ...(await Promise.resolve({ key: 42 })) });
@@ -460,6 +474,27 @@ restTuple('Hello');
         };
       }
     `,
+    // https://github.com/typescript-eslint/typescript-eslint/issues/6637
+    {
+      code: `
+        type OnSelectNodeFn = (node: string | null) => void;
+
+        interface ASTViewerBaseProps {
+          readonly onSelectNode?: OnSelectNodeFn;
+        }
+
+        declare function ASTViewer(props: ASTViewerBaseProps): null;
+        declare const onSelectFn: OnSelectNodeFn;
+
+        <ASTViewer onSelectNode={onSelectFn} />;
+      `,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      options: [{ checksVoidReturn: { attributes: true } }],
+    },
   ],
 
   invalid: [
@@ -914,7 +949,11 @@ type O = {
 const Component = (obj: O) => null;
 <Component func={async () => 0} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       errors: [
         {
           line: 6,
@@ -930,7 +969,11 @@ type O = {
 const Component = (obj: O) => null;
 <Component func={async () => 0} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       errors: [
         {
           line: 6,
@@ -948,7 +991,11 @@ const g = async () => 'foo';
 const Component = (obj: O) => null;
 <Component func={g} />;
       `,
-      filename: 'react.tsx',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       errors: [
         {
           line: 7,

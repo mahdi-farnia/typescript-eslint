@@ -8,6 +8,7 @@ import blockSpacing from './block-spacing';
 import braceStyle from './brace-style';
 import callSuperOnOverride from './call-super-on-override';
 import classLiteralPropertyStyle from './class-literal-property-style';
+import classMethodsUseThis from './class-methods-use-this';
 import commaDangle from './comma-dangle';
 import commaSpacing from './comma-spacing';
 import consistentGenericConstructors from './consistent-generic-constructors';
@@ -38,7 +39,7 @@ import confusingNonNullAssertionLikeNotEqual from './no-confusing-non-null-asser
 import noConfusingVoidExpression from './no-confusing-void-expression';
 import noDupeClassMembers from './no-dupe-class-members';
 import noDuplicateEnumValues from './no-duplicate-enum-values';
-import noDuplicateImports from './no-duplicate-imports';
+import noDuplicateTypeConstituents from './no-duplicate-type-constituents';
 import noDynamicDelete from './no-dynamic-delete';
 import noEmptyFunction from './no-empty-function';
 import noEmptyInterface from './no-empty-interface';
@@ -49,7 +50,6 @@ import noExtraSemi from './no-extra-semi';
 import noExtraneousClass from './no-extraneous-class';
 import noFloatingPromises from './no-floating-promises';
 import noForInArray from './no-for-in-array';
-import noImplicitAnyCatch from './no-implicit-any-catch';
 import noImpliedEval from './no-implied-eval';
 import noImportTypeSideEffects from './no-import-type-side-effects';
 import noInferrableTypes from './no-inferrable-types';
@@ -66,7 +66,6 @@ import noNamespace from './no-namespace';
 import noNonNullAssertedNullishCoalescing from './no-non-null-asserted-nullish-coalescing';
 import noNonNullAssertedOptionalChain from './no-non-null-asserted-optional-chain';
 import noNonNullAssertion from './no-non-null-assertion';
-import noParameterProperties from './no-parameter-properties';
 import noRedeclare from './no-redeclare';
 import noRedundantTypeConstituents from './no-redundant-type-constituents';
 import noRequireImports from './no-require-imports';
@@ -85,6 +84,7 @@ import noUnsafeArgument from './no-unsafe-argument';
 import noUnsafeAssignment from './no-unsafe-assignment';
 import noUnsafeCall from './no-unsafe-call';
 import noUnsafeDeclarationMerging from './no-unsafe-declaration-merging';
+import noUnsafeEnumComparison from './no-unsafe-enum-comparison';
 import noUnsafeMemberAccess from './no-unsafe-member-access';
 import noUnsafeReturn from './no-unsafe-return';
 import noUnusedExpressions from './no-unused-expressions';
@@ -122,7 +122,6 @@ import restrictTemplateExpressions from './restrict-template-expressions';
 import returnAwait from './return-await';
 import semi from './semi';
 import sortTypeConstituents from './sort-type-constituents';
-import sortTypeUnionIntersectionMembers from './sort-type-union-intersection-members';
 import spaceBeforeBlocks from './space-before-blocks';
 import spaceBeforeFunctionParen from './space-before-function-paren';
 import spaceInfixOps from './space-infix-ops';
@@ -145,6 +144,7 @@ export default {
   'brace-style': braceStyle,
   'call-super-on-override': callSuperOnOverride,
   'class-literal-property-style': classLiteralPropertyStyle,
+  'class-methods-use-this': classMethodsUseThis,
   'comma-dangle': commaDangle,
   'comma-spacing': commaSpacing,
   'consistent-generic-constructors': consistentGenericConstructors,
@@ -175,7 +175,7 @@ export default {
   'no-confusing-void-expression': noConfusingVoidExpression,
   'no-dupe-class-members': noDupeClassMembers,
   'no-duplicate-enum-values': noDuplicateEnumValues,
-  'no-duplicate-imports': noDuplicateImports,
+  'no-duplicate-type-constituents': noDuplicateTypeConstituents,
   'no-dynamic-delete': noDynamicDelete,
   'no-empty-function': noEmptyFunction,
   'no-empty-interface': noEmptyInterface,
@@ -186,7 +186,6 @@ export default {
   'no-extraneous-class': noExtraneousClass,
   'no-floating-promises': noFloatingPromises,
   'no-for-in-array': noForInArray,
-  'no-implicit-any-catch': noImplicitAnyCatch,
   'no-implied-eval': noImpliedEval,
   'no-import-type-side-effects': noImportTypeSideEffects,
   'no-inferrable-types': noInferrableTypes,
@@ -203,7 +202,6 @@ export default {
   'no-non-null-asserted-nullish-coalescing': noNonNullAssertedNullishCoalescing,
   'no-non-null-asserted-optional-chain': noNonNullAssertedOptionalChain,
   'no-non-null-assertion': noNonNullAssertion,
-  'no-parameter-properties': noParameterProperties,
   'no-redeclare': noRedeclare,
   'no-redundant-type-constituents': noRedundantTypeConstituents,
   'no-require-imports': noRequireImports,
@@ -222,6 +220,7 @@ export default {
   'no-unsafe-assignment': noUnsafeAssignment,
   'no-unsafe-call': noUnsafeCall,
   'no-unsafe-declaration-merging': noUnsafeDeclarationMerging,
+  'no-unsafe-enum-comparison': noUnsafeEnumComparison,
   'no-unsafe-member-access': noUnsafeMemberAccess,
   'no-unsafe-return': noUnsafeReturn,
   'no-unused-expressions': noUnusedExpressions,
@@ -259,7 +258,6 @@ export default {
   'return-await': returnAwait,
   semi: semi,
   'sort-type-constituents': sortTypeConstituents,
-  'sort-type-union-intersection-members': sortTypeUnionIntersectionMembers,
   'space-before-blocks': spaceBeforeBlocks,
   'space-before-function-paren': spaceBeforeFunctionParen,
   'space-infix-ops': spaceInfixOps,

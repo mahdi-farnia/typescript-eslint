@@ -53,7 +53,7 @@ const pluginContentDocsOptions: PluginContentDocsOptions = {
   breadcrumbs: false,
 };
 
-const themeConfig: ThemeCommonConfig & AlgoliaThemeConfig = {
+const themeConfig: AlgoliaThemeConfig & ThemeCommonConfig = {
   algolia: {
     appId: 'N1HUB2TU6A',
     apiKey: '74d42ed10d0f7b327d74d774570035c7',
@@ -91,7 +91,7 @@ const themeConfig: ThemeCommonConfig & AlgoliaThemeConfig = {
       },
       {
         position: 'right',
-        value: `v${version}`,
+        value: `<div class="menu__version-item">v${version}</div>`,
         type: 'html',
       },
       {
@@ -103,7 +103,7 @@ const themeConfig: ThemeCommonConfig & AlgoliaThemeConfig = {
       {
         href: githubUrl,
         position: 'right',
-        className: 'github-link header-github-link',
+        className: 'github-link image-link header-github-link',
         'aria-label': 'GitHub repository',
       },
     ],
@@ -119,21 +119,27 @@ const themeConfig: ThemeCommonConfig & AlgoliaThemeConfig = {
         title: 'Community',
         items: [
           {
-            label: 'Stack Overflow',
-            href: 'https://stackoverflow.com/questions/tagged/typescript-eslint',
-            className: 'stack-overflow-link social-link-icon',
-          },
-          {
-            label: 'Twitter',
-            href: 'https://twitter.com/tseslint',
-            rel: 'me noopener',
-            className: 'twitter-link social-link-icon',
+            label: 'Discord',
+            href: 'https://discord.gg/FSxKq8Tdyg',
+            rel: 'noopener',
+            className: 'image-link discord-link social-link-icon',
           },
           {
             label: 'Mastodon',
             href: 'https://fosstodon.org/@tseslint',
             rel: 'me noopener',
-            className: 'mastodon-link social-link-icon',
+            className: 'image-link mastodon-link social-link-icon',
+          },
+          {
+            label: 'Stack Overflow',
+            href: 'https://stackoverflow.com/questions/tagged/typescript-eslint',
+            className: 'image-link stack-overflow-link social-link-icon',
+          },
+          {
+            label: 'Twitter',
+            href: 'https://twitter.com/tseslint',
+            rel: 'me noopener',
+            className: 'image-link twitter-link social-link-icon',
           },
         ],
       },
@@ -144,12 +150,12 @@ const themeConfig: ThemeCommonConfig & AlgoliaThemeConfig = {
             label: 'GitHub',
             href: githubUrl,
             rel: 'me noopener',
-            className: 'github-link social-link-icon',
+            className: 'github-link image-link social-link-icon',
           },
           {
             label: 'Report issue',
             href: `${githubUrl}/issues/new/choose`,
-            className: 'bug-report-link social-link-icon',
+            className: 'bug-report-link image-link social-link-icon',
           },
         ],
       },

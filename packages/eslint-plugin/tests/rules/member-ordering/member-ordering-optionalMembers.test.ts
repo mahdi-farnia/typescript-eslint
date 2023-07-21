@@ -1,8 +1,8 @@
+import { RuleTester } from '@typescript-eslint/rule-tester';
 import type { TSESLint } from '@typescript-eslint/utils';
 
 import type { MessageIds, Options } from '../../../src/rules/member-ordering';
 import rule from '../../../src/rules/member-ordering';
-import { RuleTester } from '../../RuleTester';
 
 const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
@@ -105,8 +105,8 @@ class X {
       code: `
 class X {
   a: string;
-  static {}
   b: string;
+  static {}
 }
       `,
       options: [
@@ -332,6 +332,35 @@ class X {
           column: 3,
           data: {
             member: 'a',
+            optionalOrRequired: 'required',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+class X {
+  b: string;
+  a: string;
+}
+      `,
+      options: [
+        {
+          default: {
+            memberTypes: 'never',
+            order: 'natural-case-insensitive',
+            optionalityOrder: 'required-first',
+          },
+        },
+      ],
+      errors: [
+        {
+          messageId: 'incorrectOrder',
+          line: 4,
+          column: 3,
+          data: {
+            member: 'a',
+            beforeMember: 'b',
             optionalOrRequired: 'required',
           },
         },
